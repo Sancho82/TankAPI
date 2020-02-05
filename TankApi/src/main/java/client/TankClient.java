@@ -12,7 +12,7 @@ public class TankClient {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
             .createEntityManagerFactory("TankApi");
 
-    public Tank addTank() {
+    public Tank addTank(String name, String owner, String type) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction et;
         Tank tank = null;
@@ -26,9 +26,9 @@ public class TankClient {
 
             tank = new Tank()
                     .setId(++lastId)
-                    .setName("Piranha")
-                    .setOwner("Szani")
-                    .setType("M48 Patton");
+                    .setName(name)
+                    .setOwner(owner)
+                    .setType(type);
 
             if (em.find(Tank.class, tank.getId()) == null) em.persist(tank);
             else System.out.println("Tank with given Id already exists.");

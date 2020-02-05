@@ -1,6 +1,7 @@
 package views;
 
 import colors.Colors;
+import presenter.Presenter;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -8,6 +9,8 @@ import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
 public class CreateView extends JFrame {
+
+    private Presenter presenter;
 
     private JPanel createPanel;
     private JButton createButton;
@@ -47,7 +50,11 @@ public class CreateView extends JFrame {
         createButton.setBackground(colors.getGold());
         createButton.setForeground(Color.WHITE);
         createButton.addActionListener(e -> {
-
+            this.presenter.createTank(
+                    tankNameTextField.getText(),
+                    tankOwnerTextField.getText(),
+                    tankTypeTextField.getText()
+            );
         });
         createPanel.add(createButton);
 
@@ -110,7 +117,7 @@ public class CreateView extends JFrame {
         tankOwnerTextField.setFont(new Font("Verdana", Font.BOLD, 20));
         tankOwnerTextField.setHorizontalAlignment(SwingConstants.LEFT);
         tankOwnerTextField.setBackground(colors.getFog());
-        tankNameTextField.setForeground(Color.WHITE);
+        tankOwnerTextField.setForeground(Color.WHITE);
         tankOwnerTextField.setOpaque(true);
         createPanel.add(tankOwnerTextField);
 
@@ -119,9 +126,11 @@ public class CreateView extends JFrame {
         tankTypeTextField.setFont(new Font("Verdana", Font.BOLD, 20));
         tankTypeTextField.setHorizontalAlignment(SwingConstants.LEFT);
         tankTypeTextField.setBackground(colors.getFog());
-        tankNameTextField.setForeground(Color.WHITE);
+        tankTypeTextField.setForeground(Color.WHITE);
         tankTypeTextField.setOpaque(true);
         createPanel.add(tankTypeTextField);
+
+        presenter = new Presenter(this);
 
         repaint();
     }
