@@ -54,7 +54,6 @@ public class TankClient {
 
             if (resultList.size() > 0) {
                 for(Tank tank : resultList) {
-                    System.out.println(tank.toString());
                     if (tank.getName().equals(name)) em.remove(tank);
                 }
             } else System.out.println("Tank with given name doesn't exists.");
