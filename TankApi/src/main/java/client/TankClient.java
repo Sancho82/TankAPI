@@ -2,10 +2,8 @@ package client;
 
 import entity.Tank;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import java.util.List;
 
 public class TankClient {
 
@@ -22,17 +20,15 @@ public class TankClient {
             et = em.getTransaction();
             et.begin();
 
-            lastId = (Long) (em.createQuery("SELECT MAX(Id) FROM Tank").getResultList().get(0));
+            lastId = (Long) (em.createQuery("select max(tankId) from Tank").getResultList().get(0));
 
             tank = new Tank()
-                    .setId(++lastId)
+                    .setTankId(++lastId)
                     .setName(name)
                     .setOwner(owner)
                     .setType(type);
 
-            if (em.find(Tank.class, tank.getId()) == null) em.persist(tank);
-            else System.out.println("Tank with given Id already exists.");
-
+            em.persist(tank);
             et.commit();
 
         } catch (Exception e) {
@@ -41,5 +37,34 @@ public class TankClient {
             em.close();
         }
         return tank;
+    }
+
+    public void deleteTank(String name) {
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction et;
+
+        try {
+            et = em.getTransaction();
+            et.begin();
+
+            TypedQuery<Tank> query = em.createQuery("select t from Tank t where t.name=:name", Tank.class);
+            query.setParameter("name", name);
+
+            List<Tank> resultList = query.getResultList();
+
+            if (resultList.size() > 0) {
+                for(Tank tank : resultList) {
+                    System.out.println(tank.toString());
+                    if (tank.getName().equals(name)) em.remove(tank);
+                }
+            } else System.out.println("Tank with given name doesn't exists.");
+
+            et.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 }
