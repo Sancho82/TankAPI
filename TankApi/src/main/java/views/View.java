@@ -12,7 +12,7 @@ public class View extends JFrame {
 
     public View() {
         setTitle("View");
-        setBounds(0, 0, 2000, 1000);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);

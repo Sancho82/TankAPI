@@ -12,7 +12,6 @@ public class Main {
             View view = new View();
         });
 
-        TankClient tankClient = new TankClient();
-        tankClient.deleteTank("Mike");
+        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
     }
 }

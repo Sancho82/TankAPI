@@ -29,7 +29,9 @@ public class CreatePanel extends JPanel {
         colors = new Colors();
 
         setLayout(null);
-        setBounds(0, 0, 2000, 1000);
+        setBounds(0, 0,
+                (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
+                (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
         setBackground(colors.getDrape());
         setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
         setOpaque(true);

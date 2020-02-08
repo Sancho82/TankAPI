@@ -5,12 +5,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/TankClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/TankClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/CreateView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/CreatePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/CreatePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/DeletePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/DeletePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/LandingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LandingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/client/TankClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/TankClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presenter/Presenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presenter/Presenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/CreateView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/CreatePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/CreatePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/DeletePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/DeletePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/LandingPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/LandingPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/View.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +44,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../java/TankBattle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../TankApi" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
