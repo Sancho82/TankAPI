@@ -2,7 +2,9 @@ package presenter;
 
 import client.TankClient;
 import entity.Tank;
-import views.View;
+import view.panels.CreatePanel;
+import view.panels.DeletePanel;
+import view.View;
 
 public class Presenter {
 
@@ -22,11 +24,15 @@ public class Presenter {
         return tankClient;
     }
 
-    public Tank createTank(String name, String owner, String type) {
-        return tankClient.addTank(name, owner, type);
+    public Tank findTankByName() {
+        return tankClient.findTankByName();
     }
 
-    public void deleteTank(String name) {
-        tankClient.deleteTank(name);
+    public void addTank(String name, String owner, String type) {
+        ((CreatePanel) (view.getViewPanel())).setMessage(tankClient.addTank(name, owner, type));
+    }
+
+    public void deleteTank(String message) {
+        ((DeletePanel) (view.getViewPanel())).setMessage(tankClient.deleteTank(message));
     }
 }

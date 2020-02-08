@@ -1,12 +1,13 @@
-package views;
+package view.panels;
 
 import colors.Colors;
+import view.View;
 
 import javax.swing.*;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
-public class LandingPanel extends JPanel {
+public class LandingPanel extends AbstractPanel {
 
     private View view;
     private Colors colors;
@@ -16,6 +17,8 @@ public class LandingPanel extends JPanel {
     private JButton toDeletePanelButton;
     private JButton toUpdatePanelButton;
     private JButton quitButton;
+
+    private JLabel messageLabel;
 
     public LandingPanel(View view) {
         colors = new Colors();
@@ -88,5 +91,10 @@ public class LandingPanel extends JPanel {
             view.changePanel("Quit");
         });
         add(quitButton);
+    }
+
+    @Override
+    public void setMessage(String message) {
+
     }
 }

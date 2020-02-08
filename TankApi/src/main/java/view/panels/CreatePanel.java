@@ -1,13 +1,14 @@
-package views;
+package view.panels;
 
 import colors.Colors;
+import view.View;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
-public class CreatePanel extends JPanel {
+public class CreatePanel extends AbstractPanel {
 
     private View view;
 
@@ -17,6 +18,7 @@ public class CreatePanel extends JPanel {
     private JLabel tankNameLabel;
     private JLabel tankOwnerLabel;
     private JLabel tankTypeLabel;
+    private JLabel messageLabel;
 
     private JTextField tankNameTextField;
     private JTextField tankOwnerTextField;
@@ -44,7 +46,7 @@ public class CreatePanel extends JPanel {
         createButton.setBackground(colors.getGold());
         createButton.setForeground(Color.WHITE);
         createButton.addActionListener(e -> {
-            view.getPresenter().createTank(
+            view.getPresenter().addTank(
                     tankNameTextField.getText(),
                     tankOwnerTextField.getText(),
                     tankTypeTextField.getText()
@@ -123,5 +125,20 @@ public class CreatePanel extends JPanel {
         tankTypeTextField.setForeground(Color.WHITE);
         tankTypeTextField.setOpaque(true);
         add(tankTypeTextField);
+
+        messageLabel = new JLabel();
+        messageLabel.setBounds(500, 610, 610, 30);
+        messageLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+        messageLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        messageLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+        messageLabel.setBackground(colors.getDrape());
+        messageLabel.setForeground(Color.red);
+        messageLabel.setOpaque(true);
+        add(messageLabel);
+    }
+
+    @Override
+    public void setMessage(String message) {
+        messageLabel.setText(message);
     }
 }

@@ -11,7 +11,7 @@ public class Tank {
     @Column(name = "ID")
     private Long tankId;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", unique = true)
     private String name;
 
     @Column(name = "OWNER")

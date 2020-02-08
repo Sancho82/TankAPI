@@ -1,6 +1,7 @@
-package views;
+package view;
 
 import presenter.Presenter;
+import view.panels.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +9,7 @@ import java.awt.*;
 public class View extends JFrame {
 
     private Presenter presenter;
-    private Component viewPanel;
+    private AbstractPanel viewPanel;
 
     public View() {
         setTitle("View");
@@ -24,6 +25,10 @@ public class View extends JFrame {
 
     public Presenter getPresenter() {
         return presenter;
+    }
+
+    public Component getViewPanel() {
+        return viewPanel;
     }
 
     public void changePanel(String message) {
@@ -45,13 +50,6 @@ public class View extends JFrame {
             case "CreatePanel":
                 remove(viewPanel);
                 viewPanel = new CreatePanel(this);
-                add(viewPanel);
-                repaint();
-                break;
-
-            case "UpdatePanel":
-                remove(viewPanel);
-                viewPanel = new UpdatePanel(this);
                 add(viewPanel);
                 repaint();
                 break;

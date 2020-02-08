@@ -4,16 +4,22 @@ import entity.Tank;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
 public class TankClient {
 
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
             .createEntityManagerFactory("TankApi");
 
-    public Tank addTank(String name, String owner, String type) {
+    public Tank findTankByName() {
+        return null;
+    }
+
+    public String addTank(String name, String owner, String type) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction et;
-        Tank tank = null;
+        String createMessage = "";
+        Tank tank;
         Long lastId;
 
         try {
@@ -29,19 +35,23 @@ public class TankClient {
                     .setType(type);
 
             em.persist(tank);
+            createMessage = "Tank successfully created.";
             et.commit();
 
+        } catch (RollbackException e) {
+            createMessage = "Tank with given name already exists.";
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             em.close();
         }
-        return tank;
+        return createMessage;
     }
 
-    public void deleteTank(String name) {
+    public String deleteTank(String name) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction et;
+        String deleteMessage = "";
 
         try {
             et = em.getTransaction();
@@ -50,20 +60,22 @@ public class TankClient {
             TypedQuery<Tank> query = em.createQuery("select t from Tank t where t.name=:name", Tank.class);
             query.setParameter("name", name);
 
-            List<Tank> resultList = query.getResultList();
+            Optional<Tank> result = Optional.ofNullable(query.getSingleResult());
 
-            if (resultList.size() > 0) {
-                for(Tank tank : resultList) {
-                    if (tank.getName().equals(name)) em.remove(tank);
-                }
-            } else System.out.println("Tank with given name doesn't exist.");
+            if (result.isPresent()) {
+                deleteMessage = "Tank with given name successfully deleted.";
+                em.remove(result.get());
+            }
 
             et.commit();
 
+        } catch (NoResultException nre) {
+            deleteMessage = "Tank with given name doesn't exist.";
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             em.close();
         }
+        return deleteMessage;
     }
 }
