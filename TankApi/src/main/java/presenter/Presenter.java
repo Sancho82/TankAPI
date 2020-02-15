@@ -5,6 +5,9 @@ import entity.Tank;
 import view.panels.CreatePanel;
 import view.panels.DeletePanel;
 import view.View;
+import view.panels.SearchPanel;
+
+import java.util.Optional;
 
 public class Presenter {
 
@@ -24,8 +27,13 @@ public class Presenter {
         return tankClient;
     }
 
-    public Tank findTankByName() {
-        return tankClient.findTankByName();
+    public String findTankByName(String name) {
+        String message;
+        Optional<Tank> tank = tankClient.findTankByName(name);
+        message = tank.isPresent() ? "Tank found!" : "Tank with given name doesn't exist.";
+
+        ((SearchPanel) (view.getViewPanel())).setStatistics(tank, message);
+        return message;
     }
 
     public void addTank(String name, String owner, String type) {

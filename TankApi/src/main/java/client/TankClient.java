@@ -3,7 +3,6 @@ package client;
 import entity.Tank;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Optional;
 
 public class TankClient {
@@ -11,8 +10,28 @@ public class TankClient {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
             .createEntityManagerFactory("TankApi");
 
-    public Tank findTankByName() {
-        return null;
+    public Optional<Tank> findTankByName(String name) {
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction et;
+        Optional<Tank> result = Optional.empty();
+
+        try {
+            et = em.getTransaction();
+            et.begin();
+
+            TypedQuery<Tank> query = em.createQuery("select t from Tank t where t.name=:name", Tank.class);
+            query.setParameter("name", name);
+
+            result = Optional.ofNullable(query.getSingleResult());
+
+            et.commit();
+
+        } catch (Exception e) {
+            System.out.println("Query unsuccessful.");
+        } finally {
+            em.close();
+        }
+        return result;
     }
 
     public String addTank(String name, String owner, String type) {
