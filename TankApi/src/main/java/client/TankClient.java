@@ -27,7 +27,7 @@ public class TankClient {
             et.commit();
 
         } catch (Exception e) {
-            System.out.println("Query unsuccessful.");
+            System.out.println("Find query unsuccessful.");
         } finally {
             em.close();
         }
@@ -37,7 +37,7 @@ public class TankClient {
     public String addTank(String name, String owner, String type) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction et;
-        String createMessage = "";
+        String createMessage = null;
         Tank tank;
         Long lastId;
 
@@ -60,17 +60,39 @@ public class TankClient {
         } catch (RollbackException e) {
             createMessage = "Tank with given name already exists.";
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Create query unsuccessful.");
         } finally {
             em.close();
         }
         return createMessage;
     }
 
+    public Tank updateTank(Tank tank) {
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction et;
+
+        try {
+            et = em.getTransaction();
+            et.begin();
+
+            em.merge(tank);
+
+            et.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Update query unsuccessful.");
+        } finally {
+            em.close();
+        }
+
+        return findTankByName(tank.getName()).get();
+    }
+
     public String deleteTank(String name) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction et;
-        String deleteMessage = "";
+        String deleteMessage = null;
 
         try {
             et = em.getTransaction();
@@ -91,7 +113,7 @@ public class TankClient {
         } catch (NoResultException nre) {
             deleteMessage = "Tank with given name doesn't exist.";
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Delete query unsuccessful.");
         } finally {
             em.close();
         }

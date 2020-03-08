@@ -93,6 +93,8 @@ public class DeletePanel extends AbstractPanel {
 
     @Override
     public void setMessage(String message) {
+        Color color = message.equals("Tank with given name successfully deleted.") ? Color.black : Color.red;
+        messageLabel.setForeground(color);
         messageLabel.setText(message);
     }
 }

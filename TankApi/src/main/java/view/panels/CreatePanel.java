@@ -139,6 +139,8 @@ public class CreatePanel extends AbstractPanel {
 
     @Override
     public void setMessage(String message) {
+        Color color = message.equals("Tank successfully created.") ? Color.black : Color.red;
+        messageLabel.setForeground(color);
         messageLabel.setText(message);
     }
 }
