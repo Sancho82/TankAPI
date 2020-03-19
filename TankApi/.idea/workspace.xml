@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e3d52a8a-653a-4109-9a59-5808abd31f53" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/panels/LandingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/panels/LandingPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/panels/LandingPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/panels/LandingPanel.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
