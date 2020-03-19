@@ -12,10 +12,10 @@ public class LandingPanel extends AbstractPanel {
     private View view;
     private Colors colors;
 
-    private JButton toCreatePanelButton;
     private JButton toSearchPanelButton;
+    private JButton toListAllPanelButton;
+    private JButton toCreatePanelButton;
     private JButton toDeletePanelButton;
-    private JButton toUpdatePanelButton;
     private JButton quitButton;
 
     private JLabel messageLabel;
@@ -32,7 +32,7 @@ public class LandingPanel extends AbstractPanel {
         setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
         setOpaque(true);
 
-        toSearchPanelButton  = new JButton();
+        toSearchPanelButton = new JButton();
         toSearchPanelButton.setBounds(200, 100, 500, 100);
         toSearchPanelButton.setFont(new Font("Verdana", Font.BOLD, 40));
         toSearchPanelButton.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
@@ -44,8 +44,21 @@ public class LandingPanel extends AbstractPanel {
         });
         add(toSearchPanelButton);
 
+        toListAllPanelButton = new JButton();
+        toListAllPanelButton.setBounds(200, 210, 500, 100);
+        toListAllPanelButton.setFont(new Font("Verdana", Font.BOLD, 40));
+        toListAllPanelButton.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
+        toListAllPanelButton.setText("List all Tanks");
+        toListAllPanelButton.setBackground(colors.getGold());
+        toListAllPanelButton.setForeground(Color.WHITE);
+        toListAllPanelButton.addActionListener(e -> {
+            view.changePanel("ListAllPanel");
+            setMessage("Function is currently unavailable");
+        });
+        add(toListAllPanelButton);
+
         toCreatePanelButton = new JButton();
-        toCreatePanelButton.setBounds(200, 210, 500, 100);
+        toCreatePanelButton.setBounds(200, 320, 500, 100);
         toCreatePanelButton.setFont(new Font("Verdana", Font.BOLD, 40));
         toCreatePanelButton.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
         toCreatePanelButton.setText("Create New Tank");
@@ -55,18 +68,6 @@ public class LandingPanel extends AbstractPanel {
             view.changePanel("CreatePanel");
         });
         add(toCreatePanelButton);
-
-        toUpdatePanelButton = new JButton();
-        toUpdatePanelButton.setBounds(200, 320, 500, 100);
-        toUpdatePanelButton.setFont(new Font("Verdana", Font.BOLD, 40));
-        toUpdatePanelButton.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
-        toUpdatePanelButton.setText("Update Tank");
-        toUpdatePanelButton.setBackground(colors.getGold());
-        toUpdatePanelButton.setForeground(Color.WHITE);
-        toUpdatePanelButton.addActionListener(e -> {
-            view.changePanel("UpdatePanel");
-        });
-        add(toUpdatePanelButton);
 
         toDeletePanelButton = new JButton();
         toDeletePanelButton.setBounds(200, 430, 500, 100);
@@ -91,10 +92,20 @@ public class LandingPanel extends AbstractPanel {
             view.changePanel("Quit");
         });
         add(quitButton);
+
+        messageLabel = new JLabel();
+        messageLabel.setBounds(200, 650, 610, 30);
+        messageLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+        messageLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        messageLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+        messageLabel.setBackground(colors.getDrape());
+        messageLabel.setForeground(Color.red);
+        messageLabel.setOpaque(true);
+        add(messageLabel);
     }
 
     @Override
     public void setMessage(String message) {
-
+        messageLabel.setText(message);
     }
 }

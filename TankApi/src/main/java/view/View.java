@@ -47,6 +47,10 @@ public class View extends JFrame {
                 repaint();
                 break;
 
+            case "ListAllPanel":
+                //TODO
+                break;
+
             case "CreatePanel":
                 remove(viewPanel);
                 viewPanel = new CreatePanel(this);
